@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Header from "./components/ui/header";
 import {
   BookOpen,
   Users,
@@ -17,38 +18,6 @@ import {
 } from "lucide-react";
 
 const TinyLMSLanding = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 22,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-useEffect(() => {
-    // Date fixe : 20 jours à partir du 21 septembre 2025
-    const targetDate = new Date('2025-10-13T23:59:59');
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetDate.getTime() - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      } else {
-        // Si la date est dépassée, afficher 0
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   const scrollToReservation = () => {
     document
       .getElementById("reservation")
@@ -115,132 +84,8 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <span className="font-semibold">🎉 TinyLMS arrive bientôt !</span>
-              <div className="hidden sm:flex sm:items-center space-x-2 text-sm">
-                <span>Lancement dans :</span>
-                <div className="flex space-x-1">
-                  <span className="bg-white/20 px-2 py-1 rounded text-xs font-mono">
-                    {timeLeft.days}j
-                  </span>
-                  <span className="bg-white/20 px-2 py-1 rounded text-xs font-mono">
-                    {timeLeft.hours}h
-                  </span>
-                  <span className="bg-white/20 px-2 py-1 rounded text-xs font-mono">
-                    {timeLeft.minutes}m
-                  </span>
-                  <span className="bg-white/20 px-2 py-1 rounded text-xs font-mono">
-                    {timeLeft.seconds}s
-                  </span>
-                </div>
-              </div>
-            </div>
-            <button
-              onClick={scrollToReservation}
-              className="bg-white text-purple-600 px-4 py-1 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
-            >
-              Être averti
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                  <BookOpen className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-2xl font-bold text-gray-900">
-                  TinyLMS
-                </span>
-              </div>
-            </div>
-
-            {/* Desktop Menu */}
-            <nav className="hidden md:flex space-x-8">
-              <a
-                href="#features"
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                Fonctionnalités
-              </a>
-              <a
-                href="#testimonials"
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                Témoignages
-              </a>
-              <a
-                href="#about"
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                À propos
-              </a>
-            </nav>
-
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center">
-              <button
-                onClick={scrollToReservation}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-200"
-              >
-                Réserver maintenant
-              </button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-600 hover:text-gray-900"
-              >
-                {mobileMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200">
-              <nav className="flex flex-col space-y-4">
-                <a
-                  href="#features"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Fonctionnalités
-                </a>
-                <a
-                  href="#testimonials"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Témoignages
-                </a>
-                <a href="#about" className="text-gray-600 hover:text-gray-900">
-                  À propos
-                </a>
-                <button
-                  onClick={scrollToReservation}
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium w-full text-center"
-                >
-                  Réserver maintenant
-                </button>
-              </nav>
-            </div>
-          )}
-        </div>
-      </header>
+      <Header scrollToReservation={scrollToReservation} />
 
       {/* Hero Section */}
       <section className="relative bg-gray-50 py-20 overflow-hidden">
@@ -249,24 +94,29 @@ useEffect(() => {
         <div className="absolute top-40 right-1/3 w-24 h-24 bg-green-100 rounded-full opacity-50"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-            <div className="text-center lg:col-span-6 lg:text-left">
-              <h1 className="text-4xl font-bold text-gray-900 tracking-tight sm:text-5xl md:text-6xl">
-                La plateforme qui fait
-                <span className="block text-blue-600">gagner du temps</span>
-                <span className="block">à votre école</span>
+          <div className="xl:grid xl:grid-cols-12 xl:gap-8 items-center">
+            <div className="text-center lg:col-span-6 xl:text-left">
+              <h1 className="text-6xl font-bold text-gray-900 tracking-tight">
+                Attirez 
+                <span className="block text-blue-600">
+                  plus d'étudiants et facilitez la gestion
+                </span>
+                <span className="block">de votre école.</span>
               </h1>
               <p className="mt-8 text-[18px] max-md:text-[16px] text-gray-600 leading-relaxed">
-                TinyLMS révolutionne la gestion pédagogique des écoles de
-                formation. Centralisez vos cours, automatisez vos tâches, et
-                offrez une expérience d'apprentissage moderne à vos étudiants.
-                Simplicité, efficacité et performance au service de l'excellence
-                éducative.
+                <p className="mt-8 text-[18px] max-md:text-[16px] text-gray-600 leading-relaxed">
+                  TinyLMS aide les écoles de formation à attirer et fidéliser
+                  plus d’étudiants. Centralisez vos cours, suivez facilement les
+                  performances et automatisez vos tâches administratives pour
+                  libérer du temps. Concentrez-vous sur ce qui compte vraiment :
+                  offrir une expérience d’apprentissage de qualité qui séduira
+                  vos futurs étudiants.
+                </p>
               </p>
               <div className="mt-10 text-center lg:text-left">
                 <button
                   onClick={scrollToReservation}
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2 mx-auto lg:mx-0"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2 mx-auto xl:mx-0"
                 >
                   <span>Démarrer maintenant</span>
                   <ArrowRight className="w-5 h-5" />
@@ -274,21 +124,20 @@ useEffect(() => {
               </div>
             </div>
             <div className="mt-16 lg:mt-0 lg:col-span-6 lg:flex lg:items-center">
-              <div className="relative mx-auto w-full lg:max-w-md">
-                {/* Desktop: Image qui dépasse à gauche */}
-                <div className="hidden lg:block relative bg-yellow-400 rounded-2xl">
-                  <div className="relative">
-                    <img
-                      src="/classroom.png"
-                      alt="school manager"
-                      className="w-[500px] h-[300px] object-cover rounded-2xl"
-                    />
-                  </div>
+              <div className="relative w-[900px] h-[700px]">
+                {/* Desktop: Image qui prend toute la partie droite */}
+                <div className="hidden xl:block relative bg-yellow-400 rounded-2xl w-full h-full">
+                  <img
+                    src="/classroom-1.webp"
+                    alt="school manager"
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
+                  {/* Décorations */}
                   <div className="absolute -top-4 -right-4 bg-orange-500 rounded-full p-3">
-                    <BarChart3 className="w-6 h-6" />
+                    <BarChart3 className="w-6 h-6 text-white" />
                   </div>
                   <div className="absolute -bottom-4 -left-4 bg-green-500 rounded-full p-3">
-                    <Users className="w-6 h-6" />
+                    <Users className="w-6 h-6 text-white" />
                   </div>
                 </div>
               </div>
@@ -316,8 +165,10 @@ useEffect(() => {
                 key={index}
                 className="p-8 rounded-2xl border border-gray-100"
               >
-                <div className="flex items-start space-x-6">
-                  <div className={`${feature.color} text-white p-3 rounded-xl`}>
+                <div className="flex items-start space-x-6 max-md:flex-col max-md:items-center max-md:text-center">
+                  <div
+                    className={`${feature.color} text-white p-3 rounded-xl max-md:mb-4`}
+                  >
                     {feature.icon}
                   </div>
                   <div className="flex-1">
@@ -464,10 +315,9 @@ useEffect(() => {
                 L'avenir appartient aux établissements connectés
               </h3>
               <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                À Yaoundé et dans tout le Cameroun, les institutions qui
+                Plusieurs études comme celles citées ci-dessus démontrent que les institutions qui
                 investissent dans la digitalisation aujourd'hui deviennent les
-                références de demain. Ne laissez pas vos concurrents prendre
-                l'avance dans cette révolution éducative.
+                références de demain. Prenez un temps d'avance sur vos concurrents dans cette révolution éducative.
               </p>
             </div>
           </div>
@@ -530,7 +380,7 @@ useEffect(() => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Priorité de cette fonctionnalité
                   </label>
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 items-center max-md:flex-col max-md:space-y-2">
                     {["Faible", "Moyenne", "Élevée", "Critique"].map(
                       (priority) => (
                         <label key={priority} className="flex items-center">
@@ -574,10 +424,10 @@ useEffect(() => {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-md:text-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center mb-6">
+              <div className="flex items-center max-md:justify-center mb-6">
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
                   <BookOpen className="w-5 h-5 text-white" />
                 </div>
