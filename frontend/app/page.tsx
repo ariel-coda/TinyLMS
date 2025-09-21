@@ -124,7 +124,7 @@ const TinyLMSLanding = () => {
               </div>
             </div>
             <div className="mt-16 lg:mt-0 lg:col-span-6 lg:flex lg:items-center">
-              <div className="relative w-[900px] h-[700px]">
+              <div className="relative w-[900px] h-[700px] max-xl:w-0 max-xl:h-0">
                 {/* Desktop: Image qui prend toute la partie droite */}
                 <div className="hidden xl:block relative bg-yellow-400 rounded-2xl w-full h-full">
                   <img
@@ -380,7 +380,7 @@ const TinyLMSLanding = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Priorité de cette fonctionnalité
                   </label>
-                  <div className="flex space-x-4 items-center max-md:flex-col max-md:space-y-2">
+                  <div className="flex space-x-4 max-md:flex-col max-md:space-y-2">
                     {["Faible", "Moyenne", "Élevée", "Critique"].map(
                       (priority) => (
                         <label key={priority} className="flex items-center">
