@@ -447,26 +447,34 @@ const TinyLMSLanding = () => {
           <div className="xl:grid xl:grid-cols-12 xl:gap-8 items-center">
             <div className="text-center lg:col-span-6 xl:text-left">
               <h1 className="text-6xl font-bold text-gray-900 tracking-tight">
-                Attirez
+                Des formations
                 <span className="block text-blue-600">
-                  plus d'étudiants et facilitez la gestion
+                  plus organisées, plus efficaces et plus attractives.
                 </span>
-                <span className="block">de votre école.</span>
+                <span className="block"></span>
               </h1>
               <p className="mt-8 text-[18px] max-md:text-[16px] text-gray-600 leading-relaxed">
-                TinyLMS aide les écoles de formation à attirer et fidéliser plus
-                d’étudiants. Centralisez vos cours, suivez facilement les
-                performances et automatisez vos tâches administratives pour
-                libérer du temps. Concentrez-vous sur ce qui compte vraiment :
-                offrir une expérience d’apprentissage de qualité qui séduira vos
-                futurs étudiants.
+                TinyLMS aide les centres de formation à organiser leurs cours de
+                manière optimale, en trouvant le juste équilibre entre théorie
+                et pratique. Suivez facilement les performances de vos
+                apprenants, automatisez la gestion administrative et offrez une
+                expérience d’apprentissage claire, engageante et réellement
+                efficace.
               </p>
-              <div className="mt-10 text-center lg:text-left">
+              <div className="mt-10 flex flex-col md:flex-row items-center max-md:items-center md:space-x-4 space-y-4 md:space-y-0 justify-center xl:justify-start lg:justify-center">
                 <button
                   onClick={scrollToReservation}
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2 mx-auto xl:mx-0"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2"
                 >
                   <span>Démarrer maintenant</span>
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={scrollToReservation}
+                  className="text-blue-600 px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                >
+                  <span>En savoir plus</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </div>

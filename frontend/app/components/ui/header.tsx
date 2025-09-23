@@ -19,7 +19,7 @@ const navLinks: NavLink[] = [
 
 const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
   const [timeLeft, setTimeLeft] = useState({
-    days: 22,
+    days: 31,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
 
   useEffect(() => {
     // Date fixe : 20 jours à partir du 21 septembre 2025
-    const targetDate = new Date("2025-10-13T23:59:59");
+    const targetDate = new Date("2025-10-22T23:59:59");
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <span className="max-md:hidden font-semibold">
-                🎉 TinyLMS arrive bientôt !
+                TinyLMS arrive bientôt !
               </span>
               <div className="sm:flex sm:items-center space-x-2 text-sm">
                 <span>Lancement dans :</span>
