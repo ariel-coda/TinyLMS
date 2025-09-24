@@ -453,7 +453,7 @@ const TinyLMSLanding = () => {
                 </span>
                 <span className="block"></span>
               </h1>
-              <p className="mt-8 text-[18px] max-md:text-[16px] text-gray-600 leading-relaxed">
+              <p className="mt-8 text-[18px] max-md:text-[18px] text-gray-600 leading-relaxed">
                 TinyLMS aide les centres de formation à organiser leurs cours de
                 manière optimale, en trouvant le juste équilibre entre théorie
                 et pratique. Suivez facilement les performances de vos
@@ -509,7 +509,7 @@ const TinyLMSLanding = () => {
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               Pourquoi choisir TinyLMS ?
             </h2>
-            <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="mt-4 text-[20px] max-md:text-[18px]  text-gray-600 max-w-3xl mx-auto">
               Une solution complète pensée pour les besoins spécifiques des
               écoles de formation modernes
             </p>
@@ -548,7 +548,7 @@ const TinyLMSLanding = () => {
           <h2 className="text-3xl font-bold bg-blue-title sm:text-4xl mb-6">
             Réservez votre place maintenant
           </h2>
-          <p className="text-lg text-blue-100 max-w-3xl bg-blue-text mx-auto mb-12 leading-relaxed">
+          <p className="text-[18px] max-md:text-[16px] text-blue-100 max-w-3xl bg-blue-text mx-auto mb-12 leading-relaxed">
             Rejoignez les institutions qui ont déjà fait le choix de
             l'excellence pédagogique. Optimisez la gestion de votre école et
             offrez une expérience d'apprentissage exceptionnelle à vos
@@ -655,7 +655,7 @@ const TinyLMSLanding = () => {
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               Pourquoi digitaliser maintenant ?
             </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 text-[20px] max-md:text-[18px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Le secteur éducatif camerounais connaît une transformation
               digitale accélérée. Les établissements qui s'adaptent maintenant
               prennent une longueur d'avance décisive.
@@ -706,7 +706,7 @@ const TinyLMSLanding = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 L'avenir appartient aux établissements connectés
               </h3>
-              <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-[18px] max-md:text-[16px] text-gray-700 leading-relaxed max-w-4xl mx-auto">
                 Plusieurs études comme celles citées ci-dessus démontrent que
                 les institutions qui investissent dans la digitalisation
                 aujourd'hui deviennent les références de demain. Prenez un temps
@@ -724,7 +724,7 @@ const TinyLMSLanding = () => {
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               Aidez-nous à construire votre LMS idéal
             </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 text-[18px] max-md:text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Vos besoins guident notre développement. Partagez vos suggestions
               de fonctionnalités et participez à la création de TinyLMS.
             </p>

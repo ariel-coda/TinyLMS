@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { BookOpen, Menu, X } from "lucide-react";
+import { BookOpen, Menu, X, PartyPopper } from "lucide-react";
 
 interface HeaderProps {
   scrollToReservation: () => void;
@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <span className="max-md:hidden font-semibold">
-                TinyLMS arrive bientôt !
+                🎉 TinyLMS arrive bientôt !
               </span>
               <div className="sm:flex sm:items-center space-x-2 text-sm">
                 <span>Lancement dans :</span>
