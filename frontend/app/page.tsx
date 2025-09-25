@@ -55,7 +55,7 @@ const TinyLMSLanding = () => {
       icon: <Zap className="w-8 h-8" />,
       title: "Automatisation intelligente",
       description:
-        "Libérez-vous des tâches répétitives grâce à notre système d'automatisation avancé. Notifications automatiques de cours, rappels personnalisés aux étudiants, génération de rapports de performance, et alertes de suivi - laissez TinyLMS gérer les détails pendant que vous vous concentrez sur l'enseignement.",
+        "Libérez-vous des tâches répétitives grâce à notre système d'automatisation avancé. Notifications automatiques de cours, rappels personnalisés aux étudiants, génération de rapports de performance, et alertes de suivi - laissez tinyLMS gérer les détails pendant que vous vous concentrez sur l'enseignement.",
       color: "bg-purple-500",
     },
     {
@@ -97,9 +97,9 @@ const TinyLMSLanding = () => {
     // Regex pour validations
     const phoneRegex = /^\+2376\d{8}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const nameRegex = /^[a-zA-ZÀ-ÿ]+([ '\-][a-zA-ZÀ-ÿ]+)+$/;
+    const nameRegex = /^[a-zA-ZÀ-ÿ]+([ '\-][a-zA-ZÀ-ÿ]+)*$/;
     const schoolNameRegex = /^[a-zA-ZÀ-ÿ0-9\s\-.']{2,100}$/;
-    const postRegex = /^[a-zA-ZÀ-ÿ\s\-']{2,25}$/;
+    const postRegex = /^[a-zA-ZÀ-ÿ\s\-']{2,100}$/;
 
     // 1. Validation côté client
     const validateForm = () => {
@@ -138,7 +138,7 @@ const TinyLMSLanding = () => {
       }
 
       // Validation du numéro de téléphone
-      if (formData.phone.trim() || !phoneRegex.test(formData.phone.trim())) {
+      if (!formData.phone.trim() || !phoneRegex.test(formData.phone.trim())) {
         errors.push(
           "Numéro de téléphone invalide. Veuillez entrer un numéro de téléphone camerounais ex:+2376XXXXXXXX"
         );
@@ -230,7 +230,7 @@ const TinyLMSLanding = () => {
         setAlert({
           type: "success",
           title: "Inscription réussie !",
-          description: "Votre demande a été enregistrée avec succès 🎉",
+          description: "Bienvenue à bord 🚀 ! Votre inscription est validée. Regardez votre messagerie pour la confirmation",
         });
         setFormData({
           name: "",
@@ -241,6 +241,17 @@ const TinyLMSLanding = () => {
           school_size: "",
         });
       }
+      // Envoi du mail de confirmation 
+      await fetch("/api/sendmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+        }),
+      });
     } catch (error) {
       console.error("Erreur inattendue:", error);
       setAlert({
@@ -454,7 +465,7 @@ const TinyLMSLanding = () => {
                 <span className="block"></span>
               </h1>
               <p className="mt-8 text-[18px] max-md:text-[18px] text-gray-600 leading-relaxed">
-                TinyLMS aide les centres de formation à organiser leurs cours de
+                tinyLMS aide les centres de formation à organiser leurs cours de
                 manière optimale, en trouvant le juste équilibre entre théorie
                 et pratique. Suivez facilement les performances de vos
                 apprenants, automatisez la gestion administrative et offrez une
@@ -507,7 +518,7 @@ const TinyLMSLanding = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Pourquoi choisir TinyLMS ?
+              Pourquoi choisir tinyLMS ?
             </h2>
             <p className="mt-4 text-[20px] max-md:text-[18px]  text-gray-600 max-w-3xl mx-auto">
               Une solution complète pensée pour les besoins spécifiques des
@@ -549,10 +560,10 @@ const TinyLMSLanding = () => {
             Réservez votre place maintenant
           </h2>
           <p className="text-[18px] max-md:text-[16px] text-blue-100 max-w-3xl bg-blue-text mx-auto mb-12 leading-relaxed">
-            Rejoignez les institutions qui ont déjà fait le choix de
-            l'excellence pédagogique. Optimisez la gestion de votre école et
-            offrez une expérience d'apprentissage exceptionnelle à vos
-            étudiants.
+            Rejoignez la liste d’attente dès aujourd’hui et soyez parmi les
+            premiers à découvrir une solution qui centralise cours, exercices et
+            inscriptions. Simplifiez la gestion de votre école et offrez une
+            meilleure expérience à vos étudiants.
           </p>
 
           {alert && (
@@ -726,7 +737,7 @@ const TinyLMSLanding = () => {
             </h2>
             <p className="mt-4 text-[18px] max-md:text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Vos besoins guident notre développement. Partagez vos suggestions
-              de fonctionnalités et participez à la création de TinyLMS.
+              de fonctionnalités et participez à la création de tinyLMS.
             </p>
           </div>
 
@@ -818,7 +829,7 @@ const TinyLMSLanding = () => {
                 <p className="text-sm text-blue-800 leading-relaxed">
                   💡 <strong>Participez activement !</strong> Les meilleures
                   suggestions seront intégrées en priorité et leurs auteurs
-                  bénéficieront d'un accès gratuit de 60 jours à TinyLMS.
+                  bénéficieront d'un accès gratuit de 60 jours à tinyLMS.
                 </p>
               </div>
             </div>
@@ -835,7 +846,7 @@ const TinyLMSLanding = () => {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
                   <BookOpen className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-2xl font-bold">TinyLMS</span>
+                <span className="text-2xl font-bold">tinyLMS</span>
               </div>
               <p className="bg-blue-text mb-8 leading-relaxed">
                 La plateforme d'apprentissage nouvelle génération pour les
@@ -852,7 +863,7 @@ const TinyLMSLanding = () => {
             <div>
               <h3 className="font-semibold bg-blue-title mb-6">Contact</h3>
               <div className="space-y-3 bg-blue-text leading-relaxed">
-                <div>Email : tinylms@gmail.com</div>
+                <div>Email : tinyLMS@gmail.com</div>
                 <div>Téléphone : +237 653 189 528</div>
                 <div>Adresse : Yaoundé, Cameroun</div>
               </div>
@@ -861,7 +872,7 @@ const TinyLMSLanding = () => {
 
           <div className="border-t border-gray-800 pt-8 mt-12 text-center">
             <p className="bg-blue-text leading-relaxed">
-              © 2025 TinyLMS. Tous droits réservés. Révolutionnez votre approche
+              © 2025 tinyLMS. Tous droits réservés. Révolutionnez votre approche
               pédagogique.
             </p>
           </div>
