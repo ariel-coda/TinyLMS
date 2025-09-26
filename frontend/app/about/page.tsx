@@ -74,7 +74,7 @@ const AboutPage = () => {
               </div>
             </div>
 
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed mb-8 px-10">
               C’est ainsi qu’est né tinyLMS : une plateforme pensée pour être
               simple, accessible et réellement utilisable au quotidien par les
               écoles et centres de formation. Notre objectif : offrir uniquement
@@ -82,7 +82,7 @@ const AboutPage = () => {
               complexité inutile.
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed mb-8 px-10">
               C'est là que l'idée de <strong>tinyLMS</strong> a germé. Pourquoi
               "tiny" ? Parce que nous voulons rester simples, accessibles, et
               proches de nos utilisateurs. Pas de fioritures inutiles, juste

@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <span className="max-md:hidden font-semibold">
-                🚨 tinyLMS arrive bientôt !
+                🚀 tinyLMS arrive bientôt !
               </span>
               <div className="sm:flex sm:items-center space-x-2 text-sm">
                 <span>Lancement dans :</span>
