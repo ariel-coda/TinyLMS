@@ -46,7 +46,7 @@ const AlertPopup: React.FC<AlertPopupProps> = ({
 
   const handleClose = () => {
     setVisible(false);
-    setTimeout(onClose, 400);
+    setTimeout(onClose, 600);
   };
 
   const getAlertStyles = () => {

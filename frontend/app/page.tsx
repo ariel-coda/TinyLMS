@@ -3,6 +3,11 @@ import React, { useState } from "react";
 import { supabase } from "./lib/supabaseConfig";
 import AlertPopup from "./components/ui/alertPopup";
 import Header from "./components/ui/header";
+import { useRouter } from "next/navigation";
+import Footer from "./components/ui/footer";
+import WhatsAppButton from "./components/ui/whatsapp-button";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import {
   BookOpen,
   Users,
@@ -18,6 +23,7 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
+
 
 const TinyLMSLanding = () => {
   const [formData, setFormData] = useState({
@@ -74,6 +80,7 @@ const TinyLMSLanding = () => {
     title: string;
     description?: string;
   } | null>(null);
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -230,7 +237,8 @@ const TinyLMSLanding = () => {
         setAlert({
           type: "success",
           title: "Inscription réussie !",
-          description: "Bienvenue à bord 🚀 ! Votre inscription est validée. Regardez votre messagerie pour la confirmation",
+          description:
+            "Bienvenue à bord 🚀 ! Votre inscription est validée. Regardez votre messagerie pour la confirmation",
         });
         setFormData({
           name: "",
@@ -241,7 +249,7 @@ const TinyLMSLanding = () => {
           school_size: "",
         });
       }
-      // Envoi du mail de confirmation 
+      // Envoi du mail de confirmation
       await fetch("/api/sendmail", {
         method: "POST",
         headers: {
@@ -446,6 +454,8 @@ const TinyLMSLanding = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
+      <SpeedInsights/>
+      <Analytics/>
       <Header scrollToReservation={scrollToReservation} />
 
       {/* Hero Section */}
@@ -666,10 +676,9 @@ const TinyLMSLanding = () => {
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               Pourquoi digitaliser maintenant ?
             </h2>
-            <p className="mt-4 text-[20px] max-md:text-[18px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 text-[18px] max-md:text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Le secteur éducatif camerounais connaît une transformation
-              digitale accélérée. Les établissements qui s'adaptent maintenant
-              prennent une longueur d'avance décisive.
+              digitale accélérée.
             </p>
           </div>
 
@@ -679,11 +688,20 @@ const TinyLMSLanding = () => {
                 <TrendingUp className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">+340%</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Croissance de l'e-learning en Afrique subsaharienne depuis 2020.
-                Les étudiants camerounais adoptent massivement l'apprentissage
-                digital.
-              </p>
+              <div className="relative">
+                <a
+                  href="https://ela-newsportal.com/le-grand-boom-de-lapprentissage-en-ligne-en-afrique-decouvrez-les-tendances-a-lorigine-de-la-revolution-deleducation-sur-le-continent/?lang=fr"
+                  target="_blank"
+                  className="absolute -top-25 right-0 text-blue-600 hover:text-blue-800 text-xs"
+                >
+                  [1]
+                </a>
+                <p className="text-gray-600 leading-relaxed">
+                  Croissance de l'e-learning en Afrique subsaharienne depuis 2020.
+                  Les étudiants camerounais adoptent massivement l'apprentissage
+                  digital.
+                </p>
+              </div>
             </div>
 
             <div className="text-center p-8 bg-white rounded-2xl border border-gray-200">
@@ -693,11 +711,20 @@ const TinyLMSLanding = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 15h/semaine
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Temps administratif économisé par semaine grâce à
-                l'automatisation. Plus de temps pour se concentrer sur la
-                qualité pédagogique.
-              </p>
+              <div className="relative">
+                <a
+                  href="https://www.ringover.fr/blog/automatisation-education"
+                  target="_blank"
+                  className="absolute -top-25 right-0 text-blue-600 hover:text-blue-800 text-xs"
+                >
+                  [2]
+                </a>
+                <p className="text-gray-600 leading-relaxed">
+                  Temps administratif économisé par semaine grâce à
+                  l'automatisation. Plus de temps pour se concentrer sur la
+                  qualité pédagogique.
+                </p>
+              </div>
             </div>
 
             <div className="text-center p-8 bg-white rounded-2xl border border-gray-200">
@@ -705,10 +732,19 @@ const TinyLMSLanding = () => {
                 <Target className="w-8 h-8 text-orange-600" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">83%</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Des employeurs camerounais préfèrent recruter des diplômés
-                formés avec des outils numériques modernes.
-              </p>
+              <div className="relative">
+                <a
+                  href="https://projetafterbac.com/2025/04/quels-sont-les-diplomes-les-plus-recherches-par-les-employeurs-camerounais/"
+                  target="_blank"
+                  className="absolute -top-25 right-0 text-blue-600 hover:text-blue-800 text-xs"
+                >
+                  [3]
+                </a>
+                <p className="text-gray-600 leading-relaxed">
+                  Des employeurs camerounais préfèrent recruter des diplômés
+                  formés avec des outils numériques modernes.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -802,7 +838,8 @@ const TinyLMSLanding = () => {
                           <input
                             type="radio"
                             name="priority"
-                            value="faible"
+                            value={priority}
+                            checked={suggestionData.priority === priority}
                             onChange={handleChangeSuggestion}
                             className="outline-0 bg-white w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                           />
@@ -837,47 +874,10 @@ const TinyLMSLanding = () => {
         </div>
       </section>
 
+      <WhatsAppButton />
+
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-md:text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center max-md:justify-center mb-6">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                  <BookOpen className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-2xl font-bold">tinyLMS</span>
-              </div>
-              <p className="bg-blue-text mb-8 leading-relaxed">
-                La plateforme d'apprentissage nouvelle génération pour les
-                écoles de formation modernes.
-              </p>
-              <button
-                onClick={scrollToReservation}
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-              >
-                Commencer maintenant
-              </button>
-            </div>
-
-            <div>
-              <h3 className="font-semibold bg-blue-title mb-6">Contact</h3>
-              <div className="space-y-3 bg-blue-text leading-relaxed">
-                <div>Email : tinyLMS@gmail.com</div>
-                <div>Téléphone : +237 653 189 528</div>
-                <div>Adresse : Yaoundé, Cameroun</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 pt-8 mt-12 text-center">
-            <p className="bg-blue-text leading-relaxed">
-              © 2025 tinyLMS. Tous droits réservés. Révolutionnez votre approche
-              pédagogique.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer scrollToReservation={scrollToReservation} />
     </div>
   );
 };

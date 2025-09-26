@@ -1,20 +1,23 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { BookOpen, Menu, X, PartyPopper } from "lucide-react";
+import { BookOpen, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 interface HeaderProps {
-  scrollToReservation: () => void;
+  scrollToReservation?: () => void;
 }
 
 interface NavLink {
   id: string;
   label: string;
+  href: string;
+  type: "route" | "scroll";
 }
 
 const navLinks: NavLink[] = [
-  { id: "features", label: "Fonctionnalités" },
-  { id: "suggestions", label: "Vos suggestions" },
-  { id: "about", label: "À propos" },
+  { id: "solution", label: "Notre solution", href: "/", type: "route" },
+  { id: "about", label: "À propos de nous", href: "/about", type: "route" },
 ];
 
 const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
@@ -25,11 +28,36 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
     seconds: 0,
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<string>("features");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Fonction pour gérer la navigation
+  const handleNavClick = (link: NavLink, e: React.MouseEvent) => {
+    if (link.type === "scroll") {
+      // Pour les liens de scroll sur la même page
+      if (pathname === "/") {
+        e.preventDefault();
+        const element = document.getElementById(link.id);
+        element?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Si on n'est pas sur la page d'accueil, y aller d'abord
+        router.push(`/${link.href}`);
+      }
+    }
+    // Pour les routes, Next.js Link s'en occupe automatiquement
+    setMobileMenuOpen(false);
+  };
+
+  // Déterminer l'onglet actif
+  const getActiveTab = () => {
+    if (pathname === "/") return "solution";
+    if (pathname === "/about") return "about";
+    return "";
+  };
 
   useEffect(() => {
-    // Date fixe : 20 jours à partir du 21 septembre 2025
-    const targetDate = new Date("2025-10-22T23:59:59");
+    // Date fixe : 31 jours à partir du 25 septembre 2025
+    const targetDate = new Date("2025-10-23T23:59:59");
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -45,7 +73,6 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       } else {
-        // Si la date est dépassée, afficher 0
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     }, 1000);
@@ -61,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <span className="max-md:hidden font-semibold">
-                🎉 TinyLMS arrive bientôt !
+                🚨 tinyLMS arrive bientôt !
               </span>
               <div className="sm:flex sm:items-center space-x-2 text-sm">
                 <span>Lancement dans :</span>
@@ -82,7 +109,13 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
               </div>
             </div>
             <button
-              onClick={scrollToReservation}
+              onClick={() => {
+                if (pathname !== "/") {
+                  router.push("/#reservation");
+                } else if (scrollToReservation) {
+                  scrollToReservation();
+                }
+              }}
               className="bg-white text-purple-600 px-4 py-1 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
             >
               Être averti
@@ -97,41 +130,63 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                  <BookOpen className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-2xl font-bold text-gray-900">
-                  TinyLMS
-                </span>
+                <Link href="/" className="flex items-center">
+                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                    <BookOpen className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-2xl font-bold text-gray-900">
+                    tinyLMS
+                  </span>
+                </Link>
               </div>
             </div>
+            <div className="flex space-x-8 items-center">
+              {/* Desktop Menu */}
+              <nav className="hidden lg:flex space-x-8">
+                {navLinks.map((link) => (
+                  <div key={link.id}>
+                    {link.type === "route" ? (
+                      <Link
+                        href={link.href}
+                        className={`transition-colors ${
+                          getActiveTab() === link.id
+                            ? "text-blue-600 font-medium"
+                            : "text-gray-600 hover:text-gray-900"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={(e) => handleNavClick(link, e)}
+                        className={`transition-colors ${
+                          getActiveTab() === link.id
+                            ? "text-blue-600 font-medium"
+                            : "text-gray-600 hover:text-gray-900"
+                        }`}
+                      >
+                        {link.label}
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </nav>
 
-            {/* Desktop Menu */}
-            <nav className="hidden lg:flex space-x-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={`#${link.id}`}
-                  onClick={() => setActiveTab(link.id)}
-                  className={`transition-colors ${
-                    activeTab === link.id
-                      ? "text-blue-600"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
+              {/* CTA Button */}
+              <div className="hidden lg:flex items-center">
+                <button
+                  onClick={() => {
+                    if (pathname !== "/") {
+                      router.push("/#reservation");
+                    } else if (scrollToReservation) {
+                      scrollToReservation();
+                    }
+                  }}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-200"
                 >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-
-            {/* CTA Button */}
-            <div className="hidden lg:flex items-center">
-              <button
-                onClick={scrollToReservation}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-200"
-              >
-                Réserver maintenant
-              </button>
+                  Réserver maintenant
+                </button>
+              </div>
             </div>
 
             {/* Mobile menu button */}
@@ -154,21 +209,42 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
             <div className="lg:hidden py-4 border-t border-gray-200">
               <nav className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
-                  <a
-                    key={link.id}
-                    href={`#${link.id}`}
-                    onClick={() => setActiveTab(link.id)}
-                    className={`transition-colors ${
-                      activeTab === link.id
-                        ? "text-blue-600"
-                        : "text-gray-600 hover:text-gray-900"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
+                  <div key={link.id}>
+                    {link.type === "route" ? (
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`block transition-colors ${
+                          getActiveTab() === link.id
+                            ? "text-blue-600 font-medium"
+                            : "text-gray-600 hover:text-gray-900"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={(e) => handleNavClick(link, e)}
+                        className={`block text-left transition-colors ${
+                          getActiveTab() === link.id
+                            ? "text-blue-600 font-medium"
+                            : "text-gray-600 hover:text-gray-900"
+                        }`}
+                      >
+                        {link.label}
+                      </button>
+                    )}
+                  </div>
                 ))}
                 <button
-                  onClick={scrollToReservation}
+                  onClick={() => {
+                    if (pathname !== "/") {
+                      router.push("/#reservation");
+                    } else if (scrollToReservation) {
+                      scrollToReservation();
+                    }
+                    setMobileMenuOpen(false);
+                  }}
                   className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium w-full text-center"
                 >
                   Réserver maintenant
