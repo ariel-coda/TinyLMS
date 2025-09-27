@@ -48,12 +48,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Geist", Arial, Helvetica, sans-serif;
 }
 
 /* Style des titres h1,h2..h4 */
 h1,h2,h3,h4{
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Geist", Arial, Helvetica, sans-serif;
   transition: .1s;
     color: #0b3558;
 }
