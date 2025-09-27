@@ -467,14 +467,14 @@ const TinyLMSLanding = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="xl:grid xl:grid-cols-12 xl:gap-8 items-center">
             <div className="text-center lg:col-span-6 xl:text-left">
-              <h1 className="text-6xl font-bold text-gray-900 tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 tracking-tight">
                 Des formations
                 <span className="block text-blue-600">
                   plus organisées, plus efficaces et plus attractives.
                 </span>
                 <span className="block"></span>
               </h1>
-              <p className="mt-8 text-[18px] max-md:text-[18px] text-gray-600 leading-relaxed">
+              <p className="mt-8 lg:text-lg sm:text-base text-sm text-gray-600 leading-relaxed">
                 tinyLMS aide les centres de formation à organiser leurs cours de
                 manière optimale, en trouvant le juste équilibre entre théorie
                 et pratique. Suivez facilement les performances de vos
@@ -485,7 +485,7 @@ const TinyLMSLanding = () => {
               <div className="mt-10 flex flex-col md:flex-row items-center max-md:items-center md:space-x-4 space-y-4 md:space-y-0 justify-center xl:justify-start lg:justify-center">
                 <button
                   onClick={scrollToReservation}
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-sm lg:text-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2"
                 >
                   <span>Démarrer maintenant</span>
                   <ArrowRight className="w-5 h-5" />
@@ -493,7 +493,7 @@ const TinyLMSLanding = () => {
 
                 <button
                   onClick={scrollToReservation}
-                  className="text-blue-600 px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                  className="text-blue-600 px-8 py-4 rounded-lg text-sm lg:text-lg font-medium hover:bg-gray-100 transition-colors flex items-center space-x-2"
                 >
                   <span>En savoir plus</span>
                   <ArrowRight className="w-5 h-5" />
@@ -527,10 +527,10 @@ const TinyLMSLanding = () => {
       <section id="features" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl mb-2 font-bold text-gray-900">
               Pourquoi choisir tinyLMS ?
             </h2>
-            <p className="mt-4 text-[20px] max-md:text-[18px]  text-gray-600 max-w-3xl mx-auto">
+            <p className="mt-4 lg:text-lg sm:text-base text-sm  text-gray-600 max-w-3xl mx-auto">
               Une solution complète pensée pour les besoins spécifiques des
               écoles de formation modernes
             </p>
@@ -549,10 +549,10 @@ const TinyLMSLanding = () => {
                     {feature.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 lg:text-lg sm:text-base text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -566,10 +566,10 @@ const TinyLMSLanding = () => {
       {/* CTA Section */}
       <section id="reservation" className="bg-blue-600 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold bg-blue-title sm:text-4xl mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold bg-blue-title mb-6">
             Réservez votre place maintenant
           </h2>
-          <p className="text-[18px] max-md:text-[16px] text-blue-100 max-w-3xl bg-blue-text mx-auto mb-12 leading-relaxed">
+          <p className="lg:text-lg sm:text-base text-sm text-blue-100 max-w-3xl bg-blue-text mx-auto mb-12 leading-relaxed">
             Rejoignez la liste d’attente dès aujourd’hui et soyez parmi les
             premiers à découvrir une solution qui centralise cours, exercices et
             inscriptions. Simplifiez la gestion de votre école et offrez une
@@ -642,7 +642,8 @@ const TinyLMSLanding = () => {
                   className="w-full outline-0 px-4 py-3 border-2 focus:border-blue-600 border-gray-300 rounded-lg"
                 >
                   <option value="">Taille de votre établissement</option>
-                  <option>Moins de 100 étudiants</option>
+                  <option>Moins de 50 étudiants</option>
+                  <option>50 - 100 étudiants</option>
                   <option>100 - 500 étudiants</option>
                   <option>500 - 1000 étudiants</option>
                   <option>Plus de 1000 étudiants</option>
@@ -658,10 +659,10 @@ const TinyLMSLanding = () => {
                     : "Réserver ma démonstration gratuite"}
                 </button>
 
-                {message && <p className="mt-4 text-sm">{message}</p>}
+                {message && <p className="mt-4 lg:text-lg sm:text-base text-sm">{message}</p>}
               </form>
             </div>
-            <p className="text-sm text-gray-500 mt-6 leading-relaxed">
+            <p className="lg:text-lg sm:text-base text-sm text-gray-500 mt-6 leading-relaxed">
               Sans engagement • Aucune carte bancaire requise • Aucun paiement
               requis
             </p>
@@ -673,10 +674,10 @@ const TinyLMSLanding = () => {
       <section id="why-now" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900">
               Pourquoi digitaliser maintenant ?
             </h2>
-            <p className="mt-4 text-[18px] max-md:text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 lg:text-lg sm:text-base text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Le secteur éducatif camerounais connaît une transformation
               digitale accélérée.
             </p>
@@ -687,7 +688,7 @@ const TinyLMSLanding = () => {
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <TrendingUp className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">+340%</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">+340%</h3>
               <div className="relative">
                 <a
                   href="https://ela-newsportal.com/le-grand-boom-de-lapprentissage-en-ligne-en-afrique-decouvrez-les-tendances-a-lorigine-de-la-revolution-deleducation-sur-le-continent/?lang=fr"
@@ -696,7 +697,7 @@ const TinyLMSLanding = () => {
                 >
                   [1]
                 </a>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 lg:text-lg sm:text-base text-sm leading-relaxed">
                   Croissance de l'e-learning en Afrique subsaharienne depuis 2020.
                   Les étudiants camerounais adoptent massivement l'apprentissage
                   digital.
@@ -708,7 +709,7 @@ const TinyLMSLanding = () => {
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Clock className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
                 15h/semaine
               </h3>
               <div className="relative">
@@ -719,7 +720,7 @@ const TinyLMSLanding = () => {
                 >
                   [2]
                 </a>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 lg:text-lg sm:text-base text-sm leading-relaxed">
                   Temps administratif économisé par semaine grâce à
                   l'automatisation. Plus de temps pour se concentrer sur la
                   qualité pédagogique.
@@ -731,7 +732,7 @@ const TinyLMSLanding = () => {
               <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Target className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">83%</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">83%</h3>
               <div className="relative">
                 <a
                   href="https://projetafterbac.com/2025/04/quels-sont-les-diplomes-les-plus-recherches-par-les-employeurs-camerounais/"
@@ -740,7 +741,7 @@ const TinyLMSLanding = () => {
                 >
                   [3]
                 </a>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 lg:text-lg sm:text-base text-sm leading-relaxed">
                   Des employeurs camerounais préfèrent recruter des diplômés
                   formés avec des outils numériques modernes.
                 </p>
@@ -750,10 +751,10 @@ const TinyLMSLanding = () => {
 
           <div className="mt-16 bg-blue-50 rounded-2xl p-8">
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl min-lg:text-2xl font-bold text-gray-900 mb-4">
                 L'avenir appartient aux établissements connectés
               </h3>
-              <p className="text-[18px] max-md:text-[16px] text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              <p className="lg:text-lg sm:text-base text-sm text-gray-700 leading-relaxed max-w-4xl mx-auto">
                 Plusieurs études comme celles citées ci-dessus démontrent que
                 les institutions qui investissent dans la digitalisation
                 aujourd'hui deviennent les références de demain. Prenez un temps
@@ -768,10 +769,10 @@ const TinyLMSLanding = () => {
       <section id="suggestions" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900">
               Aidez-nous à construire votre LMS idéal
             </h2>
-            <p className="mt-4 text-[18px] max-md:text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 lg:text-lg sm:text-base text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Vos besoins guident notre développement. Partagez vos suggestions
               de fonctionnalités et participez à la création de tinyLMS.
             </p>
@@ -863,7 +864,7 @@ const TinyLMSLanding = () => {
               </form>
 
               <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                <p className="text-sm text-blue-800 leading-relaxed">
+                <p className="lg:text-lg sm:text-base text-sm text-blue-800 leading-relaxed">
                   💡 <strong>Participez activement !</strong> Les meilleures
                   suggestions seront intégrées en priorité et leurs auteurs
                   bénéficieront d'un accès gratuit de 60 jours à tinyLMS.

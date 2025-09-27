@@ -238,18 +238,18 @@ const AboutPage = () => {
           </h2>
 
           <div className="bg-white rounded-2xl p-8 text-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 overflow-hidden">
+            <div className="w-24 h-24  rounded-full mx-auto mb-6 overflow-hidden">
               <img
                 src="/founder-tinyLMS.png"
                 alt="Founder of tinyLMS"
-                className="w-32 h-32 object-cover"
+                className="-mt-7 flex items-center justify-center w-48 h-48 object-contain"
               />
             </div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-2">
               BANAKEN Ariel
             </h3>
             <p className="text-gray-600 mb-6">
-              Développeur web et mobile intermédiaire
+              Consultant développeur web et mobile
             </p>
             <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
               Aujourd’hui, tinyLMS repose sur une vision portée par un
