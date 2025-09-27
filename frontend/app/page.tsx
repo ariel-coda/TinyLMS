@@ -187,7 +187,7 @@ const TinyLMSLanding = () => {
         setAlert({
           type: "error",
           title: "Erreur de connexion",
-          description: "Erreur lors de la vérification des données.",
+          description: "Oups! Il semble que vous ne soyez pas connecté à internet. Veuillez vous reconnecter et réessayer.",
         });
         setLoading(false);
         return;

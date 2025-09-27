@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../components/ui/header";
 import WhatsAppButton from "../components/ui/whatsapp-button";
 import Footer from "../components/ui/footer";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import {
   BookOpen,
   Heart,
@@ -30,7 +30,7 @@ const scrollToReservation = () => {
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-white">
-    <SpeedInsights/>
+      <SpeedInsights />
       <Header scrollToReservation={scrollToReservation} />
       {/* Hero Section */}
       <section className="bg-gray-50 py-16">
@@ -238,8 +238,12 @@ const AboutPage = () => {
           </h2>
 
           <div className="bg-white rounded-2xl p-8 text-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-              <span className="text-2xl font-bold text-white">👨‍💻</span>
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 overflow-hidden">
+              <img
+                src="/founder-tinyLMS.png"
+                alt="Founder of tinyLMS"
+                className="w-32 h-32 object-cover"
+              />
             </div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-2">
               BANAKEN Ariel
@@ -373,13 +377,16 @@ const AboutPage = () => {
               échanger sur vos projets et démontrer comment tinyLMS peut
               optimiser vos processus éducatifs.
             </p>
-            <a href="https://wa.me/237653189528?text=Bonjour%20je%20voudrais%20en%20savoir%20plus%20sur%20tinyLMS%20" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            <a
+              href="https://wa.me/237653189528?text=Bonjour%20je%20voudrais%20en%20savoir%20plus%20sur%20tinyLMS%20"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+            >
               Contactez nous
             </a>
           </div>
         </div>
       </section>
-    {/* Whatsapp icons */}
+      {/* Whatsapp icons */}
       <WhatsAppButton />
 
       {/* Footer */}
