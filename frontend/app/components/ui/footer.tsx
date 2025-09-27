@@ -30,7 +30,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToReservation }) => {
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
                 <Bird className="w-5 h-5 text-white" />
               </div>
-              <h1 className="text-2xl font-bold">tinyLMS</h1>
+              <h1 className="text-2xl font-semibold bg-blue-title">tinyLMS</h1>
             </div>
             <p className="text-gray-300 mb-8 leading-relaxed bg-blue-text">
               La plateforme d'apprentissage nouvelle génération pour les
