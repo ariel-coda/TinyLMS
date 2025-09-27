@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { BookOpen, Menu, X } from "lucide-react";
+import { BookOpen, Bird, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -132,7 +132,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToReservation }) => {
               <div className="flex-shrink-0 flex items-center">
                 <Link href="/" className="flex items-center">
                   <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                    <BookOpen className="w-5 h-5 text-white" />
+                    <Bird className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-2xl font-bold text-gray-900">
                     tinyLMS

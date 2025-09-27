@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Bird } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 
 interface FooterProps {
@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToReservation }) => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center max-md:justify-center mb-6">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                <BookOpen className="w-5 h-5 text-white" />
+                <Bird className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-bold">tinyLMS</span>
             </div>
